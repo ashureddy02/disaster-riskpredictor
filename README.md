@@ -75,23 +75,46 @@ yaml
 Copy code
 
 ---
+Future improvements:
+## 🐳 Docker (Coming Soon)
 
-## 🧠 Model Details
+This project will soon include full Docker support so it can be containerized and run anywhere without installing Python or dependencies manually.
 
-The ML model is a **Random Forest Classifier** trained on these features:
+Dockerizing the app will include:
 
-- Temperature  
-- Weather condition  
-- Rainfall  
-- River level  
-- Wind speed  
-- Soil moisture  
-- Past flood count  
+- A `Dockerfile` to build the image  
+- Installing Python + dependencies inside the container  
+- Exposing the Streamlit server port  
+- Running the app with `streamlit run app.py` inside the container  
+- Commands like:
 
-Outputs one of:
+```bash
+docker build -t disaster-risk .
+docker run -p 8501:8501 disaster-risk
+--
+
+## 🧠 Machine Learning Model
+
+This project uses a **Random Forest Classifier** trained on a custom synthetic dataset.  
+The model learns patterns from the following features:
+
+- 🌡 **Temperature (°C)**
+- ⛅ **Weather condition**
+- 🌧 **Rainfall (mm)**
+- 🏞 **River level (m)**
+- 💨 **Wind speed (km/h)**
+- 🌱 **Soil moisture (%)**
+- 🌊 **Past flood count**
+
+### 🎯 Prediction Output  
+The model classifies the overall disaster risk into one of the four categories:
+
 - **Low**
 - **Medium**
 - **High**
 - **Severe**
 
----
+These labels are encoded during training and decoded during prediction for user-friendly visual output.
+
+
+
